@@ -18,6 +18,10 @@ class This {
             println(this@This.num) // This#num
         }
 
+        fun bridge(num : Int) {
+            num.case3()
+        }
+
         fun Int.case3() {
             println(this) // an Int. case3's receiver.
             // if we called "10.case3()", then 10 is **this**.
@@ -27,4 +31,13 @@ class This {
             println(this@This.num) // This#num
         }
     }
+}
+
+fun main(args : Array<String>) {
+    // case 1
+    This().case1()
+    // case 2
+    This().Inner().case2()
+    // case 3
+    This().Inner().bridge(5)
 }
